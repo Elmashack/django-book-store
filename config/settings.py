@@ -2,6 +2,7 @@ import os
 import socket
 from pathlib import Path
 from environs import Env
+# import django_heroku
 
 env = Env()
 env.read_env()
@@ -186,3 +187,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
 INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
 
+# django_heroku.settigns(locals(), staticfiles=False)

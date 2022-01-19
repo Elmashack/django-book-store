@@ -14,6 +14,8 @@ pillow = "*"
 django-debug-toolbar = "*"
 boto3 = "*"
 django-storages = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [dev-packages]
 
