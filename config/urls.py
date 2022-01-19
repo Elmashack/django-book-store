@@ -4,7 +4,7 @@ from django.conf import settings
 from django.contrib import admin
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('osman/', admin.site.urls),
 
     # User management
     path('account/', include('allauth.urls')),

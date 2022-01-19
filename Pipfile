@@ -12,6 +12,8 @@ environ = {extras = ["django"], version = "*"}
 environs = {extras = ["django"], version = "*"}
 pillow = "*"
 django-debug-toolbar = "*"
+boto3 = "*"
+django-storages = "*"
 
 [dev-packages]
 
