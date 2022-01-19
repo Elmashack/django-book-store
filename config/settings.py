@@ -9,35 +9,6 @@ env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-USE_S3 = os.getenv('USE_S3') == 'TRUE'
-
-if USE_S3:
-    # aws settings
-    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
-    AWS_URL = os.getenv('AWS_URL')
-    AWS_DEFAULT_ACL = None
-    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
-    AWS_S3_REGION_NAME = 'eu-north-1'
-    AWS_S3_SIGNATURE_VERSION = 's3v4'
-    # s3 static settings
-    STATIC_URL = AWS_URL + '/static/'
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    MEDIA_URL = AWS_URL + '/media/'
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-else:
-    STATIC_URL = 'static/'
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'static')
-    ]
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 
 DEBUG = env.bool("DJANGO_DEBUG", default=False)
@@ -188,5 +159,35 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # django-debug-toolbar
 hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
 INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+USE_S3 = os.getenv('USE_S3') == 'TRUE'
+
+if USE_S3:
+    # aws settings
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+    AWS_URL = os.getenv('AWS_URL')
+    AWS_DEFAULT_ACL = None
+    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+    AWS_S3_REGION_NAME = 'eu-north-1'
+    AWS_S3_SIGNATURE_VERSION = 's3v4'
+    # s3 static settings
+    STATIC_URL = AWS_URL + '/static/'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    MEDIA_URL = AWS_URL + '/media/'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+else:
+    STATIC_URL = 'static/'
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static')
+    ]
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # django_heroku.settigns(locals(), staticfiles=False)
