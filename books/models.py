@@ -2,6 +2,7 @@ import uuid
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
+from config.storage_backends import PublicMediaStorage
 
 
 class Book(models.Model):
@@ -9,7 +10,7 @@ class Book(models.Model):
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=9, decimal_places=2)
-    image = models.ImageField(upload_to='covers/%Y/%m/', null=True)
+    image = models.ImageField(upload_to='covers/%Y/%m/', null=True, storage=PublicMediaStorage)
 
     class Meta:
         indexes = [

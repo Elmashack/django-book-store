@@ -8,8 +8,6 @@ django = "*"
 psycopg2-binary = "==2.9.2"
 django-crispy-forms = "*"
 django-allauth = "*"
-environ = {extras = ["django"], version = "*"}
-environs = {extras = ["django"], version = "*"}
 pillow = "*"
 django-debug-toolbar = "*"
 boto3 = "*"
@@ -21,3 +19,11 @@ django-heroku = "*"
 
 [requires]
 python_version = "3.8"
+
+[packages.environ]
+extras = [ "django",]
+version = "*"
+
+[packages.environs]
+extras = [ "django",]
+version = "*"

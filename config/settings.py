@@ -2,7 +2,7 @@ import os
 import socket
 from pathlib import Path
 from environs import Env
-# import django_heroku
+import django_heroku
 
 env = Env()
 env.read_env()
@@ -176,9 +176,9 @@ if USE_S3:
     AWS_S3_SIGNATURE_VERSION = 's3v4'
     # s3 static settings
     STATIC_URL = AWS_URL + '/static/'
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STATICFILES_STORAGE = 'config.backends.s3boto3.StaticStorage'
     MEDIA_URL = AWS_URL + '/media/'
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.PublicMediaStorage'
 else:
     STATIC_URL = 'static/'
     STATICFILES_DIRS = [
@@ -188,6 +188,5 @@ else:
 
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 
 # django_heroku.settigns(locals(), staticfiles=False)
