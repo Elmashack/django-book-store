@@ -178,7 +178,7 @@ if USE_S3:
     STATIC_URL = AWS_URL + '/static/'
     STATICFILES_STORAGE = 'config.backends.s3boto3.StaticStorage'
     MEDIA_URL = AWS_URL + '/media/'
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.PublicMediaStorage'
+    DEFAULT_FILE_STORAGE = 'config.backends.s3boto3.PublicMediaStorage'
 else:
     STATIC_URL = 'static/'
     STATICFILES_DIRS = [
