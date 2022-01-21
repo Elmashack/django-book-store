@@ -12,7 +12,7 @@
         {% if book.image %}
         <img src="{{ book.image.url }}" class="card-img-top" alt="{{ book.title ">
         {% else %}
-        <img src="{% static 'images/default.png' %}" class="card-img-top" alt="{{ book.title ">
+        <img src="{% static 'images/default.png' %}" class="card-img-top" alt="{{ book.title }}">
         {% endif %}
         <div class="card-body">
           <a href="{{ book.get_absolute_url }}">

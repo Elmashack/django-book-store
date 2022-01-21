@@ -176,9 +176,9 @@ if USE_S3:
     AWS_S3_SIGNATURE_VERSION = 's3v4'
     # s3 static settings
     STATIC_URL = AWS_URL + '/static/'
-    STATICFILES_STORAGE = 'config.backends.s3boto3.StaticStorage'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     MEDIA_URL = AWS_URL + '/media/'
-    DEFAULT_FILE_STORAGE = 'config.backends.s3boto3.PublicMediaqStorage'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 else:
     STATIC_URL = 'static/'
     STATICFILES_DIRS = [
