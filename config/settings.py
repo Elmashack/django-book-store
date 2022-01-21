@@ -178,7 +178,7 @@ if USE_S3:
     STATIC_URL = AWS_URL + '/static/'
     STATICFILES_STORAGE = 'config.backends.s3boto3.StaticStorage'
     MEDIA_URL = AWS_URL + '/media/'
-    DEFAULT_FILE_STORAGE = 'config.backends.s3boto3.PublicMediaStorage'
+    DEFAULT_FILE_STORAGE = 'config.backends.s3boto3.PublicMediaqStorage'
 else:
     STATIC_URL = 'static/'
     STATICFILES_DIRS = [
@@ -189,4 +189,4 @@ else:
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# django_heroku.settigns(locals(), staticfiles=False)
+django_heroku.settings(locals(), staticfiles=False)
